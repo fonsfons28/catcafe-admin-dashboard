@@ -4,7 +4,7 @@
 session_start();
 
 // Include Database
-include '../../../includes/db.php';
+include '../../../database/db.php';
 
 // Redirect if not logged in
 if (!isset($_SESSION['id'])) {
@@ -107,6 +107,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <br>
     <a href="admin_dashboard.php">Back to Admin Dashboard</a>
+
+    <script src="../../../js/createOrder.js"></script>
 
 </body>
 

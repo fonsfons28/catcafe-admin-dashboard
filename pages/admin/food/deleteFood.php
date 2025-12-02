@@ -4,7 +4,7 @@
 session_start();
 
 // Include Database 
-include '../../../includes/db.php'; // Adjust path if needed
+include '../../../database/db.php'; // Adjust path if needed
 
 // Error Handling: if id cannot be taken
 if (!isset($_GET['id'])) {

@@ -4,7 +4,7 @@
 session_start();
 
 // Include the Connect Database File
-include '../../../includes/db.php';
+include '../../../database/db.php';
 
 // Redirect to login if not logged in
 if (!isset($_SESSION['id'])) {
@@ -45,10 +45,10 @@ $pending_orders = $conn->query("
 
     <!-- Navigation Bar-->
     <p id="nav-bar">
-        <a href="admin_dashboard.php">Dashboard</a> 
-        <a href="../food/food_dashboard.php">Food Items</a> 
-        <a href="../users/customer_dashboard.php">Customers</a> 
-        <a href="../orders/order_history_dashboard.php">Finished Orders</a> 
+        <a href="admin_dashboard.php">Dashboard</a>
+        <a href="../food/food_dashboard.php">Food Items</a>
+        <a href="../users/customer_dashboard.php">Customers</a>
+        <a href="../orders/order_history_dashboard.php">Finished Orders</a>
         <a href="../../login/logout.php">Logout</a>
     </p>
 
@@ -87,7 +87,7 @@ $pending_orders = $conn->query("
             <?php while ($order = $pending_orders->fetch_assoc()): ?>
 
                 <?php
-                
+
                 // Fetch food items for this order
                 $order_id = $order['order_id'];
                 $items_res = $conn->query("SELECT f.name, oi.quantity 
@@ -109,14 +109,11 @@ $pending_orders = $conn->query("
                     <td>₱<?= number_format($order['total_price'], 2) ?></td>
                     <td><?= $order['created_at'] ?></td>
                     <td>
-                        
-                        <!-- Finish Order Button -->
-                        <a href="finishOrder.php?id=<?= $order['order_id'] ?>"
-                            onclick="return confirm('Are you sure you want to mark this order as finished?');">Finish</a> |
 
-                        <!-- Delete Order Button -->
-                        <a href="deleteOrder.php?id=<?= $order['order_id'] ?>"
-                            onclick="return confirm('Are you sure you want to delete this order?');">Delete</a>
+                        <a href="#" class="finish-order" data-id="<?= $order['order_id'] ?>">Finish</a> |
+
+                        <a href="#" class="delete-order" data-id="<?= $order['order_id'] ?>">Delete</a>
+
                     </td>
                 </tr>
 
@@ -129,7 +126,7 @@ $pending_orders = $conn->query("
         <?php endif; ?>
     </table>
 
-
+    <script src="../../../js/admin_dashboard.js"></script>
 </body>
 
 </html>

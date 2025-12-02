@@ -4,7 +4,7 @@
 session_start();
 
 // Include Database Connection
-include "../../../includes/db.php";
+include "../../../database/db.php";
 
 
 if (!isset($_GET['id'])) {

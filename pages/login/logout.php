@@ -15,4 +15,3 @@ setcookie(session_name(), '', time() - 3600, '/');
 // Redirect to login
 header("Location: login.php");
 exit();
-?>

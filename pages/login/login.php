@@ -1,7 +1,7 @@
 <?php
 session_start();  // MUST be at the top
 
-include '../../includes/db.php';
+include '../../database/db.php';
 
 // Abstract Values that will hold data later
 $message = "";
@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_SESSION['username'] = $user['username'];
 
             // Redirect to admin dashboard
-            header("Location: ../../views/admin/dashboard/admin_dashboard.php");
+            header("Location: ../../pages/admin/dashboard/admin_dashboard.php");
             exit();
         } else {
             $message = "Incorrect password!";
@@ -65,7 +65,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <!-- Show message -->
     <p style="color:red;"><?php echo $message; ?></p>
     
-    <script src="../../../script/login.js"></script>
+    <!-- To avoid showing admin pages when someone clicks return -->
+    <script src="../../../js/login.js"></script>
 </body>
 
 </html>

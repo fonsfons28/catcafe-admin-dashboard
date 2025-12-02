@@ -1,6 +1,6 @@
 <?php
 session_start();
-include '../../../includes/db.php'; // Adjust path if needed
+include '../../../database/db.php'; // Adjust path if needed
 
 // Redirect if not logged in
 if (!isset($_SESSION['id'])) {
