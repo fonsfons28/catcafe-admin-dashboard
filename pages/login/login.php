@@ -4,12 +4,13 @@ session_start();  // MUST be at the top
 include '../../database/db.php';
 
 // Abstract Values that will hold data later
-$message = "";
+$message = ""; // access or not
 $username = "";
 $password = "";
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
+    // trim both impits
     $username = trim($_POST['username'] ?? '');
     $password = trim($_POST['password'] ?? '');
 
@@ -19,6 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $stmt->execute();
     $result = $stmt->get_result();
 
+    // If there is more than one row in the admin table
     if ($result->num_rows == 1) {
 
         $user = $result->fetch_assoc();
@@ -47,8 +49,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <!DOCTYPE html>
 <html lang="en">
 
+
 <head>
-    <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
@@ -95,6 +97,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </form>
         </div>
     </div>
+    <script src="login.js"></script>
 </body>
 
 </html>
