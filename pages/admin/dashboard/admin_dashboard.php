@@ -35,6 +35,7 @@ $pending_orders = $conn->query("
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="../../../css/overview.css">
 </head>
 
 <body>
@@ -44,8 +45,6 @@ $pending_orders = $conn->query("
     <h3>Welcome, <?php echo $_SESSION['name']; ?></h3>
 
     <!-- Navigation Bar-->
-    <div class="navbar">
-    <div class = "nav-links">
     <p id="nav-bar">
         <a href="admin_dashboard.php">Dashboard</a>
         <a href="../food/food_dashboard.php">Food Items</a>
@@ -53,8 +52,6 @@ $pending_orders = $conn->query("
         <a href="../orders/order_history_dashboard.php">Finished Orders</a>
         <a href="../../login/logout.php">Logout</a>
     </p>
-</div>
-    </div>
 
     <!-- Summary Table -->
     <table border="1" cellpadding="10" id="summary-table">
@@ -72,65 +69,67 @@ $pending_orders = $conn->query("
         </tr>
     </table>
 
-    <!-- Pending Orders Table -->
-    <h2>Pending Orders</h2>
+        <!-- Pending Orders Table -->
+        <h2>Pending Orders</h2>
 
-    <!-- Create Order Button -->
-    <p><a href="createOrder.php">Create New Order</a></p>
+        <!-- Create Order Button -->
+        <p><a href="createOrder.php">Create New Order</a></p>
 
-    <table border="1" cellpadding="10" id="pending-table">
-        <tr>
-            <th>Customer</th>
-            <th>Food Items</th>
-            <th>Total Price</th>
-            <th>Order Date</th>
-            <th>Actions</th>
-        </tr>
-
-        <?php if ($pending_orders->num_rows > 0): ?>
-            <?php while ($order = $pending_orders->fetch_assoc()): ?>
-
-                <?php
-
-                // Fetch food items for this order
-                $order_id = $order['order_id'];
-                $items_res = $conn->query("SELECT f.name, oi.quantity 
-                                       FROM order_items oi
-                                       JOIN food_items f ON oi.food_id = f.id
-                                       WHERE oi.order_id = $order_id");
-
-                // store into an array
-                $food_list = [];
-
-                // store item name + food name + the price (* quantity)
-                while ($item = $items_res->fetch_assoc()) {
-                    $food_list[] = htmlspecialchars($item['name']) . " (x" . $item['quantity'] . ")";
-                }
-                ?>
-                <tr>
-                    <td><?= htmlspecialchars($order['customer_name']) ?></td>
-                    <td><?= implode(", ", $food_list) ?></td>
-                    <td>₱<?= number_format($order['total_price'], 2) ?></td>
-                    <td><?= $order['created_at'] ?></td>
-                    <td>
-
-                        <a href="#" class="finish-order" data-id="<?= $order['order_id'] ?>">Finish</a> |
-
-                        <a href="#" class="delete-order" data-id="<?= $order['order_id'] ?>">Delete</a>
-
-                    </td>
-                </tr>
-
-            <?php endwhile; ?>
-        <?php else: ?>
+        <table border="1" cellpadding="10" id="pending-table">
             <tr>
-                <!-- Display this if there are no orders in the table -->
-                <td colspan="5">No pending orders.</td>
+                <th>Customer</th>
+                <th>Food Items</th>
+                <th>Total Price</th>
+                <th>Order Date</th>
+                <th>Actions</th>
             </tr>
-        <?php endif; ?>
-    </table>
 
-    <script src="../../../js/admin_dashboard.js"></script>
+            <?php if ($pending_orders->num_rows > 0): ?>
+                <?php while ($order = $pending_orders->fetch_assoc()): ?>
+
+                    <?php
+
+                    // Fetch food items for this order
+                    $order_id = $order['order_id'];
+                    $items_res = $conn->query("SELECT f.name, oi.quantity 
+                                        FROM order_items oi
+                                        JOIN food_items f ON oi.food_id = f.id
+                                        WHERE oi.order_id = $order_id");
+
+                    // store into an array
+                    $food_list = [];
+
+                    // store item name + food name + the price (* quantity)
+                    while ($item = $items_res->fetch_assoc()) {
+                        $food_list[] = htmlspecialchars($item['name']) . " (x" . $item['quantity'] . ")";
+                    }
+                    ?>
+                    <tr>
+                        <td><?= htmlspecialchars($order['customer_name']) ?></td>
+                        <td><?= implode(", ", $food_list) ?></td>
+                        <td>₱<?= number_format($order['total_price'], 2) ?></td>
+                        <td><?= $order['created_at'] ?></td>
+                        <td>
+
+                            <a href="#" class="finish-order" data-id="<?= $order['order_id'] ?>">Finish</a> |
+
+                            <a href="#" class="delete-order" data-id="<?= $order['order_id'] ?>">Delete</a>
+
+                        </td>
+                    </tr>
+
+                <?php endwhile; ?>
+            <?php else: ?>
+                <tr>
+                    <!-- Display this if there are no orders in the table -->
+                    <td colspan="5">No pending orders.</td>
+                </tr>
+            <?php endif; ?>
+        </table>
+
+        <script src="../../../js/admin_dashboard.js"></script>
+    </main>
+
 </body>
 
 </html>
