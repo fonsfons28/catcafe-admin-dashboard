@@ -35,6 +35,7 @@ if (isset($_POST['submit'])) {
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Food Item</title>
     <link rel="stylesheet" href="../../../css/create.css">
 </head>
@@ -50,7 +51,7 @@ if (isset($_POST['submit'])) {
             </div>
         </div>
         <div class="links">
-            <a href="admin_dashboard.php" class="nav-link">
+            <a href="../dashboard/admin_dashboard.php" class="nav-link">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="18" viewBox="0 0 16 18">
                     <path d="M0 18V6L8 0L16 6V18H10V11H6V18H0Z" />
                 </svg>
@@ -126,13 +127,15 @@ if (isset($_POST['submit'])) {
 
                 <!-- Submit Button -->
                 <button type="submit" name="submit">Save</button>
+
+                <!-- BACK LINK -->
                 <a href="food_dashboard.php" class="back-link">Back to Food Dashboard</a>
 
             </form>
 
         </div>
 
-        <!-- BACK LINK -->
+
 
 
     </div>
