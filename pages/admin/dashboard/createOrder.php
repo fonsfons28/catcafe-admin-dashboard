@@ -166,12 +166,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
                 <button type="submit">Create Order</button>
-
-
-                <a href="admin_dashboard.php" class="back-link">Back to Admin Dashboard</a>
-
             </form>
         </div>
+        <a href="admin_dashboard.php" class="back-link">Back to Admin Dashboard</a>
     </div>
 
 

@@ -127,17 +127,10 @@ if (isset($_POST['submit'])) {
 
                 <!-- Submit Button -->
                 <button type="submit" name="submit">Save</button>
-
-                <!-- BACK LINK -->
-                <a href="food_dashboard.php" class="back-link">Back to Food Dashboard</a>
-
             </form>
-
         </div>
-
-
-
-
+        <!-- BACK LINK -->
+        <a href="food_dashboard.php" class="back-link">Back to Food Dashboard</a>
     </div>
 
 </body>

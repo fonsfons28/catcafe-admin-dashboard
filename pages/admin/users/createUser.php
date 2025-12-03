@@ -136,12 +136,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 <input type="text" name="current_address" placeholder="Town, City" required>
 
                 <button type="submit">Add Customer</button>
-
-                <!-- BACK LINK -->
-                <a href="../dashboard/admin_dashboard.php" class="back-link">Back to Dashboard</a>
             </form>
         </div>
-
+        <!-- BACK LINK -->
+        <a href="../dashboard/admin_dashboard.php" class="back-link">Back to Dashboard</a>
     </div>
 
 </body>
