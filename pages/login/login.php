@@ -22,7 +22,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // If there is more than one row in the admin table
     if ($result->num_rows == 1) {
-
         $user = $result->fetch_assoc();
 
         // Check password (plain text)

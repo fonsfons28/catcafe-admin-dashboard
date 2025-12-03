@@ -86,6 +86,7 @@ $pending_orders = $conn->query("
         </div>
     </nav>
 
+
     <main>
         <!-- Header + Welcome Message with name column from DB -->
         <h1>Admin Dashboard</h1>
