@@ -42,7 +42,8 @@ $result = $conn->query($sql);
         <?php endwhile; ?>
     </table>
 
-    <br> <a href="../dashboard/admin_dashboard.php">Back to Dashboard</a>
+    <br>
+    <a href="../dashboard/admin_dashboard.php">Back to Dashboard</a>
 
 </body>
 

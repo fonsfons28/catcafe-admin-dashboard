@@ -18,10 +18,10 @@ if (isset($_POST['submit'])) {
     } else {
         // Insert into food_items table
         $sql = "INSERT INTO food_items (name, description, price) VALUES ('$name', '$description', '$price')";
-        
+
         // Redirect back to food_dashboard once finished
         if ($conn->query($sql)) {
-            header("Location: food_dashboard.php"); 
+            header("Location: food_dashboard.php");
             exit();
         } else {
             $error = "Error: " . $conn->error;
@@ -32,6 +32,7 @@ if (isset($_POST['submit'])) {
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Add Food Item</title>
@@ -90,15 +91,19 @@ if (isset($_POST['submit'])) {
 
         <!-- PAGE HEADER WITH ICON -->
         <div class="page-title">
-            <svg xmlns="http://www.w3.org/2000/svg" class = "icon" width="70" height="70" viewBox="0 0 70 70" fill="none">
-            <circle cx="35" cy="35" r="35" fill="#822E2E"/>
-            <path d="M44.3008 48.9167H46.86C48.155 48.9167 49.2188 47.9146 49.3729 46.6504L51.9167 21.2438H44.2083V15H41.1713V21.2438H33.5092L33.9717 24.8513C36.6079 25.5758 39.0746 26.8863 40.5546 28.3354C42.7746 30.5246 44.3008 32.7908 44.3008 36.4908V48.9167ZM18 47.375V45.8333H41.1713V47.375C41.1713 48.2075 40.4775 48.9167 39.5833 48.9167H19.5417C18.6938 48.9167 18 48.2075 18 47.375ZM41.1713 36.5833C41.1713 24.25 18 24.25 18 36.5833H41.1713ZM18 39.6667H41.125V42.75H18V39.6667Z" fill="white"/>
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="70" height="70" viewBox="0 0 70 70" fill="none">
+                <circle cx="35" cy="35" r="35" fill="#822E2E" />
+                <path
+                    d="M44.3008 48.9167H46.86C48.155 48.9167 49.2188 47.9146 49.3729 46.6504L51.9167 21.2438H44.2083V15H41.1713V21.2438H33.5092L33.9717 24.8513C36.6079 25.5758 39.0746 26.8863 40.5546 28.3354C42.7746 30.5246 44.3008 32.7908 44.3008 36.4908V48.9167ZM18 47.375V45.8333H41.1713V47.375C41.1713 48.2075 40.4775 48.9167 39.5833 48.9167H19.5417C18.6938 48.9167 18 48.2075 18 47.375ZM41.1713 36.5833C41.1713 24.25 18 24.25 18 36.5833H41.1713ZM18 39.6667H41.125V42.75H18V39.6667Z"
+                    fill="white" />
             </svg>
-            <div class="title"> <h2>Add New Food Item</h2></div>
+            <div class="title">
+                <h2>Add New Food Item</h2>
+            </div>
         </div>
 
         <!-- ERROR MESSAGE -->
-        <?php if (!empty($error)) : ?>
+        <?php if (!empty($error)): ?>
             <p class="error-message"><?= $error ?></p>
         <?php endif; ?>
 
@@ -109,24 +114,15 @@ if (isset($_POST['submit'])) {
 
                 <!-- Name -->
                 <label for="name">Food Name:</label>
-                <input type="text" name="name" id="name" required>
+                <input type="text" name="name" placeholder="Meow-cha Latte" id="name" required>
 
                 <!-- Price -->
                 <label for="price">Price:</label>
-                <input type="number" name="price" id="price" step="0.01" required>
+                <input type="number" name="price" id="price" step="0.01" placeholder="120.00" required>
 
                 <!-- Description -->
                 <label for="description">Description:</label>
-                <textarea name="description" id="description" style="
-                    width:100%;
-                    height:100px;
-                    padding:10px;
-                    border:1px solid #ddd;
-                    border-radius:8px;
-                    font-size:16px;
-                    resize:none;
-                    margin-bottom:15px;
-                "></textarea>
+                <textarea name="description" id="description" placeholder="Enter food description..."></textarea>
 
                 <!-- Submit Button -->
                 <button type="submit" name="submit">Save</button>
@@ -137,9 +133,10 @@ if (isset($_POST['submit'])) {
         </div>
 
         <!-- BACK LINK -->
-       
+
 
     </div>
 
 </body>
+
 </html>
