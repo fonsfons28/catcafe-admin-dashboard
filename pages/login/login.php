@@ -48,25 +48,53 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <html lang="en">
 
 <head>
+    <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Login</title>
+    <title>Login</title>
+    <link rel="stylesheet" href="loginstyle.css">
 </head>
 
 <body>
-    <h2>Admin Login</h2>
-    <form method="post" action="">
-        <!-- Input Fields-->
-        <input type="text" name="username" placeholder="Username" required><br><br>
-        <input type="password" name="password" placeholder="Password" required><br><br>
-        <button type="submit">Login</button>
-    </form>
+    <nav class="navbar">
+        <div class="logo">
+            <img class="logo" src="assets/logo.svg" alt="">
+            <div class="logo-text">
+                <p class="logo-bold">cozy beans</p>
+                <p class="logo-cursive">café</p>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="left-container">
+            <div class="caveat-text">
+                <p class="caveat">Your comfort in a cup… </p>
+                <p class="caveat">with a purr.</p>
+            </div>
+            <img src="assets/white-overlay.png" class="overlay back" alt="">
 
-    <!-- Show message -->
-    <p style="color:red;"><?php echo $message; ?></p>
-    
-    <!-- To avoid showing admin pages when someone clicks return -->
-    <script src="../../../js/login.js"></script>
+            <img src="assets/white-overlay.png" class="overlay front" alt="">
+        </div>
+        <div class="form">
+            <img class="logo-form" src="assets/logo.svg" alt="">
+            <div class="logo-text-big">
+                <p class="logo-bold">cozy beans</p>
+                <p class="logo-cursive">café</p>
+            </div>
+            <div class="login-text">
+                <img src="assets/left-paw.svg" alt="">
+                <h1>Login</h1>
+                <img src="assets/left-paw.svg" alt="">
+            </div>
+            <form method="post" action="">
+                <div class="inputs">
+                    <input type="text" name="username" placeholder="Username" required>
+                    <input type="password" name="password" placeholder="Password" required>
+                </div>
+                <button class="filled full" type="submit">Login</button>
+            </form>
+        </div>
+    </div>
 </body>
 
 </html>
