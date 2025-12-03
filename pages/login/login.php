@@ -20,11 +20,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $result = $stmt->get_result();
 
     if ($result->num_rows == 1) {
-
         $user = $result->fetch_assoc();
 
         // Check password (plain text)
-        if (password_verify($password, $user['password'])) {
+        if ($password === $user['password']) {
 
             // Store User Data in session
             $_SESSION['id'] = $user['id'];
@@ -90,7 +89,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <input type="text" name="username" placeholder="Username" required>
                     <input type="password" name="password" placeholder="Password" required>
                 </div>
-                <button class="filled full" type="submit" name="login">Login</button>
+                <button class="filled full" type="submit">Login</button>
             </form>
         </div>
     </div>
